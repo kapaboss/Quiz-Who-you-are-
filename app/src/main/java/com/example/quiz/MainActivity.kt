@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
         val checkBoxMovies: CheckBox = findViewById(R.id.checkboxMovies)
         val seekBar: SeekBar = findViewById(R.id.seekBar)
 
+
         val button = findViewById<Button>(R.id.summaryButton)
         button.setOnClickListener {
             val selectedId = radioGroup.checkedRadioButtonId
@@ -126,6 +127,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("Interests", interestsString)
             intent.putExtra("TimeWithFriends", timeWithFriends)
             intent.putExtra("SelectedColor", selectedColor)
+            intent.putExtra("TimeCheck", timerTextView.text)
 
             startActivity(intent)
         }

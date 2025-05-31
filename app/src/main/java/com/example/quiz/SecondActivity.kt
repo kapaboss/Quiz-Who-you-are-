@@ -1,6 +1,7 @@
 package com.example.quiz
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,7 @@ class SecondActivity : AppCompatActivity() {
         val interests = intent.getStringExtra("Interests") ?: ""
         val timeWithFriends = intent.getIntExtra("TimeWithFriends", -1)
         val color = intent.getStringExtra("SelectedColor") ?: ""
+        val timeCheck = intent.getStringExtra("TimeCheck")
 
         val descriptionBuilder = StringBuilder()
 
@@ -59,18 +61,37 @@ class SecondActivity : AppCompatActivity() {
         descriptionBuilder.append(".")
 
         val summaryTextView = findViewById<TextView>(R.id.personality_textView)
-        summaryTextView.text = descriptionBuilder.toString()
+        if (timeCheck == "Koniec czasu"){
+            summaryTextView.text = "Nie zdążyłeś zrobić quiz w czasie 45 sekund"
+        }
+        else{
+            summaryTextView.text = descriptionBuilder.toString()
+
+            findViewById<TextView>(R.id.quiz_date).text =
+                "Data wykonania: " + (intent.getStringExtra("DatePicker") ?: "Nie wybrano")
+            findViewById<TextView>(R.id.quiz_time).text =
+                "Godzina wykonania: " + (intent.getStringExtra("TimePicker") ?: "Nie wybrano")
+            findViewById<TextView>(R.id.quiz_interests).text =
+                "Zainteresowania: " + (interests.ifEmpty { "Nie wybrano" })
+            findViewById<TextView>(R.id.quiz_friends_time).text =
+                if (timeWithFriends == -1) "Czas ze znajomymi: Nie wybrano" else "Czas ze znajomymi: $timeWithFriends/10"
+            findViewById<TextView>(R.id.quiz_color).text =
+                "Wybrany kolor: " + (color.ifEmpty { "Nie wybrano" })
+
+            val personalityImageView = findViewById<ImageView>(R.id.personality_imageView)
+
+            val personalityImageRes = when (personality) {
+                "Nieśmiały" -> R.drawable.odwazny
+                "Odważny" -> R.drawable.kreatywny
+                "Kreatywny" -> R.drawable.niesmialy
+                else -> R.drawable.kreatywny
+            }
+
+            personalityImageView.setImageResource(personalityImageRes)
+        }
 
 
-        findViewById<TextView>(R.id.quiz_date).text =
-            "Data wykonania: " + (intent.getStringExtra("DatePicker") ?: "Nie wybrano")
-        findViewById<TextView>(R.id.quiz_time).text =
-            "Godzina wykonania: " + (intent.getStringExtra("TimePicker") ?: "Nie wybrano")
-        findViewById<TextView>(R.id.quiz_interests).text =
-            "Zainteresowania: " + (interests.ifEmpty { "Nie wybrano" })
-        findViewById<TextView>(R.id.quiz_friends_time).text =
-            if (timeWithFriends == -1) "Czas ze znajomymi: Nie wybrano" else "Czas ze znajomymi: $timeWithFriends/10"
-        findViewById<TextView>(R.id.quiz_color).text =
-            "Wybrany kolor: " + (color.ifEmpty { "Nie wybrano" })
+
+
     }
 }

@@ -58,6 +58,31 @@
             android:layout_marginBottom="16dp" />
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Podaj datę i godzinę wypełniania quizu"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp"
+            android:datePickerMode="calendar"
+            android:scaleX="0.8"
+            android:scaleY="0.8" />
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:timePickerMode="clock"
+            android:layout_marginBottom="3dp" />
 
         <TextView
             android:id="@+id/timerCounter"
@@ -68,9 +93,6 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:paddingBottom="16dp" />
-
-
-
 
         <RadioGroup
             android:id="@+id/radioGroupPersonality"
@@ -103,29 +125,6 @@
                 android:text="Nieśmiały"
                 android:padding="8dp" />
         </RadioGroup>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Podaj datę i godzinę wypełniania quizu"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
-
-        <DatePicker
-            android:id="@+id/datePicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:datePickerMode="calendar"
-            android:layout_marginBottom="16dp" />
-
-        <TimePicker
-            android:id="@+id/timePicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:timePickerMode="clock"
-            android:layout_marginBottom="16dp" />
 
 
         <TextView
