@@ -168,7 +168,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Jak dużo czasu spędzasz ze znajomymi?"
+            android:text="Jak bardzo lubisz spędzać czas ze znajomymi?"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />

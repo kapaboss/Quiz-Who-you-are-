@@ -18,27 +18,59 @@ class SecondActivity : AppCompatActivity() {
             insets
         }
 
+        val personality = intent.getStringExtra("Radio_Button") ?: ""
+        val interests = intent.getStringExtra("Interests") ?: ""
+        val timeWithFriends = intent.getIntExtra("TimeWithFriends", -1)
+        val color = intent.getStringExtra("SelectedColor") ?: ""
+
+        val descriptionBuilder = StringBuilder()
+
+
+        if (personality.isNotEmpty()) {
+            descriptionBuilder.append("Jesteś  $personality")
+        }
+
+
+        if (interests.isNotEmpty()) {
+            descriptionBuilder.append(", lubiący $interests")
+        }
+
+
+        if (timeWithFriends in 0..10) {
+            if (timeWithFriends < 5) {
+                descriptionBuilder.append(", wolisz spędzać czas samotnie")
+            } else {
+                descriptionBuilder.append(",  lubisz towarzystwo")
+            }
+        }
+
+
+        if (color.isNotEmpty()) {
+            val colorDescription = when (color) {
+                "Czarny", "Niebieski" -> "osobą spokojną"
+                "Żółty", "Zielony" -> "osobą energiczną"
+                else -> ""
+            }
+            if (colorDescription.isNotEmpty()) {
+                descriptionBuilder.append(", jesteś też $colorDescription")
+            }
+        }
+
+        descriptionBuilder.append(".")
+
         val summaryTextView = findViewById<TextView>(R.id.personality_textView)
-        val message = intent.getStringExtra("Radio_Button")
-        summaryTextView.text = if (message.isNullOrEmpty()) {
-            "Nie wybrano"
-        } else {
-            "Typ osoby: " + message
-        }
+        summaryTextView.text = descriptionBuilder.toString()
 
-        val quizDateTextView = findViewById<TextView>(R.id.quiz_date)
-        val message2 = intent.getStringExtra("DatePicker")
-        quizDateTextView.text = if (message2.isNullOrEmpty()){
-            "Nie wybrano"
-        }
-        else{
-            "Data wykonania: " + message2
-        }
+
+        findViewById<TextView>(R.id.quiz_date).text =
+            "Data wykonania: " + (intent.getStringExtra("DatePicker") ?: "Nie wybrano")
+        findViewById<TextView>(R.id.quiz_time).text =
+            "Godzina wykonania: " + (intent.getStringExtra("TimePicker") ?: "Nie wybrano")
+        findViewById<TextView>(R.id.quiz_interests).text =
+            "Zainteresowania: " + (interests.ifEmpty { "Nie wybrano" })
+        findViewById<TextView>(R.id.quiz_friends_time).text =
+            if (timeWithFriends == -1) "Czas ze znajomymi: Nie wybrano" else "Czas ze znajomymi: $timeWithFriends/10"
+        findViewById<TextView>(R.id.quiz_color).text =
+            "Wybrany kolor: " + (color.ifEmpty { "Nie wybrano" })
     }
-
-
 }
-
-
-
-

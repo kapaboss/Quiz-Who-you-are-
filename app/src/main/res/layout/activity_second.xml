@@ -1,33 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondActivity"
-    android:orientation="vertical">
+    android:fillViewport="true"
+    android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/personality_textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Osobowość"
-        />
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/quiz_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data wykonania"
-        />
 
-    <TextView
-        android:id="@+id/quiz_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Godzina wykonania"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Podsumowanie Quizu"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="20dp"/>
 
-</LinearLayout>
+
+        <TextView
+            android:id="@+id/personality_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Typ osoby: "
+            android:textSize="18sp"
+            android:paddingBottom="12dp"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/quiz_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data wykonania: "
+            android:textSize="18sp"
+            android:paddingBottom="12dp"/>
+
+
+        <TextView
+            android:id="@+id/quiz_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Godzina wykonania: "
+            android:textSize="18sp"
+            android:paddingBottom="12dp"/>
+
+
+        <TextView
+            android:id="@+id/quiz_interests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Zainteresowania: "
+            android:textSize="18sp"
+            android:paddingBottom="12dp"/>
+
+
+        <TextView
+            android:id="@+id/quiz_friends_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Czas ze znajomymi: "
+            android:textSize="18sp"
+            android:paddingBottom="12dp"/>
+
+
+        <TextView
+            android:id="@+id/quiz_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wybrany kolor: "
+            android:textSize="18sp"
+            android:paddingBottom="12dp"/>
+
+
+
+
+    </LinearLayout>
+</ScrollView>
