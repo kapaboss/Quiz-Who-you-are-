@@ -8,8 +8,12 @@ import android.os.SystemClock
 import android.util.Log
 import android.widget.Button
 import android.widget.Chronometer
+import android.widget.DatePicker
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.TimePicker
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -56,11 +60,30 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroupPersonality)
+        val myDatePickerCalendar: DatePicker = findViewById<DatePicker>(R.id.datePicker)
+        val myTimePicker : TimePicker = findViewById<TimePicker>(R.id.timePicker)
         val button = findViewById<Button>(R.id.summaryButton)
         button.setOnClickListener{
+            val selectedId = radioGroup.checkedRadioButtonId
+            val radioButton = findViewById<RadioButton>(selectedId)
+            val selectedText = radioButton.text.toString()
+
+            val day = myDatePickerCalendar.dayOfMonth
+            val month = myDatePickerCalendar.month
+            val year = myDatePickerCalendar.year
+            val selectedDate = "$day/${month + 1}/$year"
+
+
+
             val intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("Radio_Button", selectedText)
+            intent.putExtra("DatePicker", selectedDate)
             startActivity(intent)
         }
+
+
+
 
 
 
